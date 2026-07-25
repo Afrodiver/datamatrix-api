@@ -1,12 +1,13 @@
-FROM python:3.12-slim
-
-RUN apt-get update && \
-    apt-get install -y libdmtx0b && \
-    pip install flask pylibdmtx pillow && \
-    apt-get clean
+FROM node:20-alpine
 
 WORKDIR /app
 
-COPY app.py .
+COPY package*.json ./
 
-CMD ["python", "app.py"]
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]
