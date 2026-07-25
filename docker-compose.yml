@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  datamatrix:
+    build: .
+    container_name: datamatrix
+    restart: unless-stopped
+    ports:
+      - "8085:5000"
